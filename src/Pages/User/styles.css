@@ -1,0 +1,58 @@
+
+div#login {
+    width: 100%;
+    height: 100vh;
+    background: no-repeat fixed url("../../assets/background.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#input {
+    width: 500px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: solid;
+    border-color: transparent;
+    border-radius: 50px;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*  ===== FORMULÁRIO ======== */
+label {
+    float: left;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input {
+    border: solid;
+    border-color: transparent;
+    border-radius: 10px;
+    text-indent: 5px;
+    width: 300px;
+    height: 25px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    background-color: #007bffAF;
+    border: solid;
+    border-radius: 10px;
+    border-color: transparent;
+}
