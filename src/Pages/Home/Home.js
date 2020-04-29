@@ -16,8 +16,11 @@ export default class Home extends Component {
                     <section className="Cards">
                         {cards.map((card) => (
                             <div className="Subcards">
-                                <h1>{card.title}</h1>
-                                <p>{card.description}</p>
+                                <div className="Subcards-text">
+                                    <h1>{card.title}</h1>
+                                    <p>{card.description}</p>
+                                </div>
+                                <img src={card.image}></img>
                             </div>
                         ))}
                     </section>

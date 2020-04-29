@@ -30,12 +30,16 @@ section.Cards div.Subcards {
     background-color: #e9ecef;
 
     display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+}
+
+section.Cards div.Subcards-text {
+    display: block;
     text-align: center;
 }
+
 .Subcards h1 {
     margin-top: 75px;
     font-size: 35px;
@@ -46,6 +50,10 @@ section.Cards div.Subcards {
     font-size: 20px;
 }
 
+section.Cards div.Subcards img {
+    width: 40vh;
+    height: 25vh;
+}
 
 
 /*
