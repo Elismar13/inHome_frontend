@@ -20,7 +20,7 @@ export default function User() {
         //window.location.reload(); //Recarregar a pagina
 
         //Enviar a solicitação ao servidor backend
-
+        
         //Em seguida salvando no armazenamento do navegador
         localStorage.setItem('@inHome/username', user);
         localStorage.setItem('@inHome/password', password);
