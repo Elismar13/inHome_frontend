@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body, #root {
     height: 100%;
+    font-size: 16px;
   }
 
   body {
@@ -20,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --side-bar-color: #5DB9FF;
+    --side-bar-background: #5DB9FF;
   } 
 `;
 

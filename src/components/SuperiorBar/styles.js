@@ -1,20 +1,30 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
 export const BarContainer = styled.header`
-  height: 100%;
+  background-color: var(--side-bar-background);
+  height: 5rem;
   width: 100%;
   display: flex;
+  align-items: center;
+  padding: 0rem 2rem;
+  justify-content: space-between;
 `;
 
 export const PageTitle = styled.h1`
+  font-size: 1.8rem;
+  font-weight: normal;
+`;
+
+export const Links = styled.ul`
+  list-style-position: outside;
+`;
+
+export const LinkItem = styled.li`
+  display: inline;
 
 `;
 
-export const Links = styled.div`
-
-`;
-
-export const LinkButton = styled(Link)`
-
+export const LinkButton = styled.a`
+  margin-left: 0.8rem;
+  font-size: 1.2rem;
 `;
