@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #root {
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     font-size: 16px;
   }
 
@@ -21,7 +22,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --side-bar-background: #5DB9FF;
+    --side-bar-color: #5DB9FF;
+    --wrapper-border-color: #444444;
   } 
 `;
 
