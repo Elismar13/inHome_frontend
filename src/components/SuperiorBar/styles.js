@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BarContainer = styled.header`
-  background-color: var(--side-bar-background);
+  background-color: var(--superior-bar-color);
   height: 5rem;
   width: 100%;
   display: flex;
