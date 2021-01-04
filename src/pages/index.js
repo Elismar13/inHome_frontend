@@ -1,15 +1,11 @@
 import React from 'react';
 
-import { GlobalStyle } from '../styles';
-
-// import SideBar from '../components/SuperiorBar';
-// import InferiorBar from '../components/InferiorBar';
+import Dashboard from '../pages/dashboard';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      {/* <SideBar /> */}
+      <Dashboard />
     </>
   );
 }
