@@ -5,7 +5,7 @@ export const BarContainer = styled.header`
   height: 6rem;
   width: 100%;
   padding: 0rem 2rem;
-  border-bottom: 0.1rem solid;
+  border-bottom: 0.1rem solid var(--borders-color);
 
   display: flex;
   align-items: center;

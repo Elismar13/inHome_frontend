@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     --side-bar-color: #5DB9FF;
-    --wrapper-border-color: #444444;
+    --borders-color: #c5c5c5;
     --ambient-card-background-color: #bababa;
     --sensor-card-background-color: #bae452;
   } 
