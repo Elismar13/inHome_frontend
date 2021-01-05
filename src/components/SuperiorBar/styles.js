@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const BarContainer = styled.header`
   background-color: var(--superior-bar-color);
-  height: 5rem;
+  height: 6rem;
   width: 100%;
+  padding: 0rem 2rem;
+  border-bottom: 0.1rem solid;
+
   display: flex;
   align-items: center;
-  padding: 0rem 2rem;
   justify-content: space-between;
 `;
 

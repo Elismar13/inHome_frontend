@@ -4,6 +4,7 @@ import React from 'react';
 import SuperiorBar from '../../components/SuperiorBar';
 import SideBar from '../../components/SideBar';
 import AmbientCard from '../../components/AmbientCard';
+import Sensor from '../../components/Sensor';
 
 import 
 { Container,
@@ -11,7 +12,9 @@ import
   SensorsData,
   DataWrapper,
   AmbientsList,
+  SensorTitle,
   SensorList,
+  GraphsData,
   Main 
 } from './styles';
 
@@ -37,12 +40,23 @@ function Dashboard( props ) {
                   status="Em operacao"
                 />
               </AmbientsList>
+              <SensorTitle>Main sensors</SensorTitle>
               <SensorList>
-                <Sensor />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+               <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
               </SensorList>
             </SensorsData>
             <GraphsData>
-              <Graph />
+              graphs
+              {/* <Graph /> */}
             </GraphsData>
           </DataWrapper>
         </Main>
