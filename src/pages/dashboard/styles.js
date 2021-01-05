@@ -32,25 +32,32 @@ export const SensorsData = styled.div`
 
 export const AmbientsList = styled.section`
   display: flex;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+  width: 100%;
   /* overflow-x: scroll; */
 `;
 
 export const SensorTitle = styled.h2`
-  
+  font-weight: normal;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
 `;
 
 export const SensorList = styled.section`
   display: flex;
   flex-direction: column;
+  padding: 0.5rem 1rem;
   /* overflow-x: scroll; */
 `;
 
 export const DataWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
 `;
 
 export const GraphsData = styled.div`
   width: 100%;
   height: 100%;
-`;
+  padding: 0.5rem 1rem;`;
