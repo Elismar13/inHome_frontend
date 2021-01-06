@@ -24,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --side-bar-color: #5DB9FF;
     --borders-color: #c5c5c5;
+    --dashboard-area-color: #EEEEEE;
+    --dashboard-cards-container: #fafafa;
     --selectd-button: rgb(13, 189, 101);
     --ambient-card-background-color: #bababa;
     --sensor-card-background-color: #bae452;

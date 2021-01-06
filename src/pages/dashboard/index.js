@@ -12,9 +12,11 @@ import
   SensorsData,
   DataWrapper,
   AmbientsList,
+  Sensors,
   SensorTitle,
   SensorList,
   GraphsData,
+  Charts,
   Main 
 } from './styles';
 
@@ -40,23 +42,27 @@ function Dashboard( props ) {
                   status="Em operacao"
                 />
               </AmbientsList>
-              <SensorTitle>Main sensors</SensorTitle>
-              <SensorList>
+              <Sensors>
+                <SensorTitle>Main sensors</SensorTitle>
+                <SensorList>
+                  <Sensor
+                    sensor_type="analog"
+                    value="2561"
+                    ambient="Assert"
+                  />
                 <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-               <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-              </SensorList>
+                    sensor_type="analog"
+                    value="2561"
+                    ambient="Assert"
+                  />
+                </SensorList>
+              </Sensors>
+              
             </SensorsData>
             <GraphsData>
-              graphs
-              {/* <Graph /> */}
+              <Charts>
+                {/* <Chart /> */}
+              </Charts>
             </GraphsData>
           </DataWrapper>
         </Main>

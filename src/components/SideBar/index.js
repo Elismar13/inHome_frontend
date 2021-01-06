@@ -24,7 +24,7 @@ function SideBar(props) {
         <AiOutlineUser size={32} color={iconColors} />
       </Icon>
 
-      <Photo />
+      <Photo src='https://www.sydney.edu.au/dam/corporate/images/news-and-opinion/news/2018/october/puppy_dog.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg' />
     </LateralBar>
   )
 }
