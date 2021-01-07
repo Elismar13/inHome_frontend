@@ -59,7 +59,7 @@ export const AmbientsList = styled.section`
 export const SensorTitle = styled.h2`
   font-weight: normal;
   font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
 `;
 
 export const SensorList = styled.section`
@@ -79,6 +79,10 @@ export const GraphsData = styled.div`
 export const Charts = styled.div`
   width: 100%;
   height: 100%;
+  padding: 1rem 2rem;
   background-color: var(--dashboard-cards-container);
   border-radius: 1rem;
+
+  overflow: scroll;
+
 `;

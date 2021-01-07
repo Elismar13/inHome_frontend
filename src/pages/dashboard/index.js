@@ -5,6 +5,7 @@ import SuperiorBar from '../../components/SuperiorBar';
 import SideBar from '../../components/SideBar';
 import AmbientCard from '../../components/AmbientCard';
 import Sensor from '../../components/Sensor';
+import Chart from '../../components/Chart';
 
 import 
 { Container,
@@ -61,7 +62,8 @@ function Dashboard( props ) {
             </SensorsData>
             <GraphsData>
               <Charts>
-                {/* <Chart /> */}
+                <Chart id="chart1" title="consumo ar"/>
+                <Chart id="chart2" title="consumo ar"/>
               </Charts>
             </GraphsData>
           </DataWrapper>
