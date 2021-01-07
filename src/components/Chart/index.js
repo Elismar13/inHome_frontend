@@ -8,7 +8,7 @@ function Chart(props) {
   useEffect(() => {
     const chart = createChart('chart1');
     console.log(chart)
-  }, []);
+  });
 
   return (
     <ChartContainer>
