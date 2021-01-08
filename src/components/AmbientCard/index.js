@@ -7,7 +7,8 @@ function AmbientCard(props) {
     <Ambient>
       <Title>{props.ambient_title}</Title>
       <Description>{props.description}</Description>
-      <Status>{props.status}</Status>
+      <Status>Status: {props.status}.</Status>
+      <Status> Ultima atualização: {props.last_update}</Status>
     </Ambient>
   );
 }
