@@ -21,6 +21,8 @@ import
   Main 
 } from './styles';
 
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+
 function Dashboard( props ) {
   return (
     <Container>
@@ -32,16 +34,14 @@ function Dashboard( props ) {
           <DataWrapper>
             <SensorsData>
               <AmbientsList>
+                <MdKeyboardArrowLeft size={64} color="fefefe" />
                 <AmbientCard 
-                  ambient_title="teste"
-                  description="lorem ipson lorem ipson lorem ipson"
+                  ambient_title="LATOMIA"
+                  description="Laboratório localizado no IFPB - Campus Campina Grande"
                   status="Em operacao"
+                  last_update="07/01/2021"
                 />
-                <AmbientCard 
-                  ambient_title="teste"
-                  description="lorem ipson lorem ipson lorem ipson"
-                  status="Em operacao"
-                />
+                <MdKeyboardArrowRight size={64} color="fefefe" />
               </AmbientsList>
               <Sensors>
                 <SensorTitle>Main sensors</SensorTitle>
@@ -52,10 +52,40 @@ function Dashboard( props ) {
                     ambient="Assert"
                   />
                 <Sensor
-                    sensor_type="analog"
-                    value="2561"
-                    ambient="Assert"
-                  />
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />
+                <Sensor
+                  sensor_type="analog"
+                  value="2561"
+                  ambient="Assert"
+                />                                                
                 </SensorList>
               </Sensors>
               
