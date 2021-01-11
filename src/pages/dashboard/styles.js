@@ -78,11 +78,10 @@ export const GraphsData = styled.div`
 
 export const Charts = styled.div`
   width: 100%;
-  height: 100%;
+  height: 34rem;
   padding: 1rem 2rem;
   background-color: var(--dashboard-cards-container);
   border-radius: 1rem;
 
-  overflow: scroll;
-
+  overflow: auto;
 `;
