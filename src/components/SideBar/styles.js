@@ -8,8 +8,8 @@ export const LateralBar = styled.nav`
   padding: 1.75rem 0px;
   height: 100%;
   width: min(5rem, 20%);
-
-  border-right: 0.1rem solid var(--borders-color);
+  position: sticky;
+  top: 0px;  
 `;
 
 export const Logo = styled(Image)`
@@ -34,7 +34,7 @@ export const Icon = styled.div`
 `;
 
 export const Photo = styled.img`
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   height: 3.5rem;
   width: 3.5rem;
