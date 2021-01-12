@@ -40,8 +40,9 @@ export const SensorsData = styled.div`
 
 export const AmbientsList = styled.section`
   display: flex;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   background-color: var(--dashboard-cards-container);
   border-radius: 1rem;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Ambient = styled.div`
   height: 10rem;
   width: 100%;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0rem;
   display: flex;
   flex-direction: column;
 

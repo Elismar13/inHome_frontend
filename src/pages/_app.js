@@ -27,8 +27,9 @@ const GlobalStyle = createGlobalStyle`
     --dashboard-area-color: #EEEEEE;
     --dashboard-cards-container: #fafafa;
     --selectd-button: rgb(13, 189, 101);
-    --ambient-card-background-color: #bababa;
+    --ambient-card-background-color: #fafafa;
     --sensor-card-background-color: #bae452;
+    --superior-bar-color: #EEEEEE;
   } 
 `;
 
