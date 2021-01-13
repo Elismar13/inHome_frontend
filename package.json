@@ -13,10 +13,9 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "next",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "eslintConfig": {
     "extends": "react-app"
