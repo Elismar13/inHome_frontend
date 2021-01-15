@@ -28,7 +28,7 @@ export const DataWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  background-color: var(--dashboard-area-color);]
+  background-color: var(--dashboard-area-color);
 `;
 
 export const SensorsData = styled.div`
@@ -59,9 +59,7 @@ export const Sensors = styled.div`
 `;
 
 export const SensorTitle = styled.h2`
-  font-weight: normal;
-  font-size: 1.2rem;
-  padding: 0.5rem 1.5rem;
+
 `;
 
 export const SensorList = styled.section`

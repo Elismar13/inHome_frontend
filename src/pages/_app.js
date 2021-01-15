@@ -32,6 +32,12 @@ const GlobalStyle = createGlobalStyle`
     --sensor-card-background-color: #bae452;
     --superior-bar-color: #EEEEEE;
   } 
+
+  h2 {
+    font-weight: normal;
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+  }
 `;
 
 const theme = {
