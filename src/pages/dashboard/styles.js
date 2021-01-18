@@ -55,7 +55,7 @@ export const Sensors = styled.div`
   margin: 0rem 0rem 2rem 0rem;
   padding: 1rem 0rem;
   border-radius: 1rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const SensorTitle = styled.h2`
@@ -83,4 +83,9 @@ export const Charts = styled.div`
   border-radius: 1rem;
 
   overflow: auto;
+`;
+
+export const MapData = styled.div`
+  height: 100%;
+  padding: 1rem 2rem;
 `;
