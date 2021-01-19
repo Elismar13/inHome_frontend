@@ -34,7 +34,7 @@ export const DataWrapper = styled.div`
 export const SensorsData = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2rem 0rem 2rem 0rem;
+  margin: 2rem 0rem 0rem 0rem;
   padding: 1rem 2rem;
 `;
 

@@ -3,8 +3,6 @@ import { Chart } from 'chart.js';
 function createChart(chartContextID) {
   const context = document.getElementById(chartContextID);
 
-  console.log("CONTEXT", context)
-
   let chart = new Chart(context, {
     type: 'line',
     data: {

@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import React from 'react';
+import dynamic from 'next/dynamic';
+import React, { useEffect, useState } from 'react';
+
+import api from '../../api/inhome';
 
 import SuperiorBar from '../../components/SuperiorBar';
 import SideBar from '../../components/SideBar';
@@ -18,12 +21,51 @@ import
   SensorList,
   GraphsData,
   Charts,
-  Main 
+  Main, 
+  MapData
 } from './styles';
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+const LocalMap = dynamic(() => import( '../../components/LocalMap'), {
+  ssr: false
+});
 
 function Dashboard( props ) {
+  const [devices, setDevices] = useState(null);
+  const [sensors, setSensors] = useState(null);
+  const [selectedDevice, setDevice] = useState(0);
+
+  useEffect(() => {
+    async function fetchInicialData() {
+      const devices = await api.get('/devices');
+      console.log(devices.data)
+      setDevices(devices.data);
+    }
+
+    async function fetchRuntimeData() {
+      console.log(devices)
+      if(devices) {
+        const sensorsData = await api.get('/devices/data', {
+          params: {
+            device_id: devices[selectedDevice].device_id,
+            device_name: devices[selectedDevice].device_name,
+            device_user: devices[selectedDevice].device_user,
+          }
+        });
+        console.log('dataaaaa', sensorsData.data)
+        setSensors(sensorsData.data);
+      }
+    }
+
+    const requestTimeout = setInterval(async() => {
+      await fetchRuntimeData();
+    }, 2500);
+
+    fetchInicialData();
+
+    return () => clearInterval(requestTimeout);
+  }, []);
+
   return (
     <Container>
       <Wrapper>
@@ -35,57 +77,28 @@ function Dashboard( props ) {
             <SensorsData>
               <AmbientsList>
                 <MdKeyboardArrowLeft size={64} color="fefefe" />
-                <AmbientCard 
-                  ambient_title="LATOMIA"
-                  description="Laboratório localizado no IFPB - Campus Campina Grande"
-                  status="Em operacao"
-                  last_update="07/01/2021"
-                />
+                {devices && (
+                   <AmbientCard 
+                    ambient_title={devices[selectedDevice].ambient}
+                    description={devices[selectedDevice].device_name}
+                    status={devices[selectedDevice].device_id}
+                    last_update={devices[selectedDevice].ambient}
+                  />
+                )}
+               
                 <MdKeyboardArrowRight size={64} color="fefefe" />
               </AmbientsList>
               <Sensors>
-                <SensorTitle>Main sensors</SensorTitle>
+                <SensorTitle>Sensores</SensorTitle>
                 <SensorList>
-                  <Sensor
-                    sensor_type="analog"
-                    value="2561"
-                    ambient="Assert"
-                  />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />
-                <Sensor
-                  sensor_type="analog"
-                  value="2561"
-                  ambient="Assert"
-                />                                                
+                  {sensors && sensors['sensors'].map((sensor) => (
+                    <Sensor
+                      sensor_type={sensor.type === 'a' ? 'analógico' : 'digital'}
+                      value={(sensor.state != null && (sensor.state ? 'off' : 'on')) || sensor.value}
+                      ambient={sensor.pin}
+                    />
+                    
+                  ))}
                 </SensorList>
               </Sensors>
               
@@ -97,6 +110,14 @@ function Dashboard( props ) {
               </Charts>
             </GraphsData>
           </DataWrapper>
+          <MapData>
+            {devices && (
+              <LocalMap
+                centerPosition={[-7.2395956,-35.9159146]}
+                devicesPositions={devices}
+              />
+            )}
+          </MapData>
         </Main>
 
       </Wrapper>
