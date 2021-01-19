@@ -33,27 +33,32 @@ const LocalMap = dynamic(() => import( '../../components/LocalMap'), {
 function Dashboard( props ) {
   const [devices, setDevices] = useState(null);
   const [sensors, setSensors] = useState(null);
+  const [lastSensorData, setLastData] = useState(null);
+  const [charts, setCharts] = useState(null);
   const [selectedDevice, setDevice] = useState(0);
 
   useEffect(() => {
     async function fetchInicialData() {
       const devices = await api.get('/devices');
-      console.log(devices.data)
       setDevices(devices.data);
     }
 
     async function fetchRuntimeData() {
-      console.log(devices)
       if(devices) {
-        const sensorsData = await api.get('/devices/data', {
+        const { data } = await api.get('/devices/data', {
           params: {
             device_id: devices[selectedDevice].device_id,
             device_name: devices[selectedDevice].device_name,
             device_user: devices[selectedDevice].device_user,
           }
         });
-        console.log('dataaaaa', sensorsData.data)
-        setSensors(sensorsData.data);
+        const chartsData = data.forEach(({ sensors }) => {
+          return sensors.filter((sensor) => sensor.type === 'a');
+        })
+        setSensors(data);
+        setLastData(data[0]);
+      } else {
+        await fetchInicialData();
       }
     }
 
@@ -77,12 +82,12 @@ function Dashboard( props ) {
             <SensorsData>
               <AmbientsList>
                 <MdKeyboardArrowLeft size={64} color="fefefe" />
-                {devices && (
+                {devices && lastSensorData && (
                    <AmbientCard 
                     ambient_title={devices[selectedDevice].ambient}
                     description={devices[selectedDevice].device_name}
                     status={devices[selectedDevice].device_id}
-                    last_update={devices[selectedDevice].ambient}
+                    last_update={new Date(lastSensorData.updated_at).toLocaleString()}
                   />
                 )}
                
@@ -91,14 +96,16 @@ function Dashboard( props ) {
               <Sensors>
                 <SensorTitle>Sensores</SensorTitle>
                 <SensorList>
-                  {sensors && sensors['sensors'].map((sensor) => (
-                    <Sensor
-                      sensor_type={sensor.type === 'a' ? 'analógico' : 'digital'}
-                      value={(sensor.state != null && (sensor.state ? 'off' : 'on')) || sensor.value}
-                      ambient={sensor.pin}
-                    />
-                    
-                  ))}
+                  {lastSensorData && lastSensorData.sensors.map((sensor) => {
+                      return (
+                        <Sensor
+                          sensor_type={sensor.type === 'a' ? 'analógico' : 'digital'}
+                          value={(sensor.state != null && (sensor.state ? 'off' : 'on')) || sensor.value}
+                          ambient={sensor.pin}
+                        />
+                      )
+                    }
+                  )}
                 </SensorList>
               </Sensors>
               

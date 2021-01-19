@@ -1,15 +1,15 @@
 import { Chart } from 'chart.js';
 
-function createChart(chartContextID) {
+function createChart(chartContextID, chartTitle, chartData, chartLabels) {
   const context = document.getElementById(chartContextID);
 
   let chart = new Chart(context, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: chartLabels,
       datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          label: chartTitle,
+          data: chartData,
           backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
