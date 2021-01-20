@@ -10,6 +10,9 @@ import AmbientCard from '../../components/AmbientCard';
 import Sensor from '../../components/Sensor';
 import Chart from '../../components/Chart';
 
+import { addData, createChart, removeData } from '../../utils/chart';
+
+
 import 
 { Container,
   Wrapper,
@@ -26,6 +29,7 @@ import
 } from './styles';
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import { convertToHourMinutes } from '../../utils/generateDate';
 const LocalMap = dynamic(() => import( '../../components/LocalMap'), {
   ssr: false
 });
@@ -52,24 +56,34 @@ function Dashboard( props ) {
             device_user: devices[selectedDevice].device_user,
           }
         });
-        const chartsData = data.forEach(({ sensors }) => {
-          return sensors.filter((sensor) => sensor.type === 'a');
-        })
+
+        const { sensors, updated_at } = data[0];
+        const lastUpdate = convertToHourMinutes(updated_at);
+        const analogSensors = sensors.filter((sensor) => sensor.type === 'a');
+
+        if(!charts) {
+          const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
+          setCharts(sensorsChart);
+        } else {
+          // chart.data.datasets[0].data = chart.data.datasets[0].data.push(analogSensors[0].item)
+          charts.forEach(({ chart }, index) => {
+            if(chart.data.labels.length > 15) removeData(chart)
+            addData(chart, lastUpdate, Math.random()*100);
+          });
+        }
+
         setSensors(data);
         setLastData(data[0]);
-      } else {
-        await fetchInicialData();
       }
     }
 
-    const requestTimeout = setInterval(async() => {
+    const requestInterval = setInterval(async() => {
+      if(!devices) await fetchInicialData();
       await fetchRuntimeData();
     }, 2500);
 
-    fetchInicialData();
-
-    return () => clearInterval(requestTimeout);
-  }, []);
+    return () => clearInterval(requestInterval);
+  });
 
   return (
     <Container>
@@ -112,15 +126,14 @@ function Dashboard( props ) {
             </SensorsData>
             <GraphsData>
               <Charts>
-                <Chart id="chart1" title="consumo ar"/>
-                <Chart id="chart2" title="consumo ar"/>
+                <Chart id='corrente' title='Consumo de corrente do ar-condicionado' />
               </Charts>
             </GraphsData>
           </DataWrapper>
           <MapData>
             {devices && (
               <LocalMap
-                centerPosition={[-7.2395956,-35.9159146]}
+                centerPosition={[-7.2394546,-35.9159146]}
                 devicesPositions={devices}
               />
             )}
