@@ -77,13 +77,13 @@ function Dashboard( props ) {
       }
     }
 
-    const requestInterval = setInterval(async() => {
+    const requestTimer = setTimeout(async() => {
       if(!devices) await fetchInicialData();
       await fetchRuntimeData();
     }, 2500);
 
-    return () => clearInterval(requestInterval);
-  });
+    return () => clearInterval(requestTimer);
+  }, [devices, sensors]);
 
   return (
     <Container>
