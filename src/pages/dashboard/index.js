@@ -95,17 +95,19 @@ function Dashboard( props ) {
           <DataWrapper>
             <SensorsData>
               <AmbientsList>
-                <MdKeyboardArrowLeft size={64} color="fefefe" />
                 {devices && lastSensorData && (
-                   <AmbientCard 
-                    ambient_title={devices[selectedDevice].ambient}
-                    description={devices[selectedDevice].device_name}
-                    status={devices[selectedDevice].device_id}
-                    last_update={new Date(lastSensorData.updated_at).toLocaleString()}
-                  />
+                  <>
+                    <MdKeyboardArrowLeft size={64} color="fefefe"  onClick={() => setDevice((selectedDevice - 1 < 0) ? devices.length - 1 : selectedDevice - 1 )}/>
+                    <AmbientCard 
+                      ambient_title={devices[selectedDevice].ambient}
+                      description={devices[selectedDevice].device_name}
+                      status={devices[selectedDevice].device_id}
+                      last_update={new Date(lastSensorData.updated_at).toLocaleString()}
+                    />
+                    <MdKeyboardArrowRight size={72} color="fefefe" onClick={() => setDevice((selectedDevice + 1 > devices.length - 1) ? 0 : selectedDevice + 1)}/>
+                  </>
                 )}
                
-                <MdKeyboardArrowRight size={64} color="fefefe" />
               </AmbientsList>
               <Sensors>
                 <SensorTitle>Sensores</SensorTitle>
