@@ -43,6 +43,7 @@ export const AmbientsList = styled.section`
   padding: 1rem 0.5rem;
   justify-content: space-between;
   align-items: center;
+  height: 12rem;
   width: 100%;
   background-color: var(--dashboard-cards-container);
   border-radius: 1rem;

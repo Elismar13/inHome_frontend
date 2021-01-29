@@ -38,6 +38,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.2rem;
     padding: 0.5rem 1.5rem;
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 const theme = {
