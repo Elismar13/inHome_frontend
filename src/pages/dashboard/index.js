@@ -53,16 +53,16 @@ function Dashboard( props ) {
     socket.on('update_data', (lastData) => {
       const { sensors, updated_at } = lastData;
       const lastUpdate = convertToHourMinutes(updated_at);
-      const analogSensors = sensors.filter((sensor) => sensor.type === 'a');
-
+      const analogSensors = sensors.filter((sensor) => sensor.type === "current");
       if(!charts) {
-        const sensorsChart = analogSensors.forEach((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
+        const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
         setCharts(sensorsChart);
       } else {
         // chart.data.datasets[0].data = chart.data.datasets[0].data.push(analogSensors[0].item)
+        console.log('opa')
         charts.forEach(({ chart }, index) => {
           if(chart.data.labels.length > 15) removeData(chart)
-          addData(chart, lastUpdate, Math.random()*100);
+          addData(chart, lastUpdate, analogSensors[0].value);
         });
       }
 
@@ -179,7 +179,7 @@ function Dashboard( props ) {
                   {lastSensorData && lastSensorData.sensors.map((sensor) => {
                       return (
                         <Sensor
-                          sensor_type={sensor.type === 'a' ? 'analógico' : 'digital'}
+                          sensor_type={sensor.type}
                           value={(sensor.state != null && (sensor.state ? 'off' : 'on')) || sensor.value}
                           ambient={sensor.pin}
                         />

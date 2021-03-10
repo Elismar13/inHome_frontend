@@ -19,7 +19,7 @@ export function removeData(chart) {
 
 export function createChart(chartContextID, chartTitle) {
     const context = document.getElementById(chartContextID);
-    console.log(context)
+    
     let chart = new Chart(context, {
       type: 'line',
       data: {
