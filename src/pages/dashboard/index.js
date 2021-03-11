@@ -53,6 +53,7 @@ function Dashboard( props ) {
     socket.on('update_data', (lastData) => {
       const { sensors, updated_at } = lastData;
       const lastUpdate = convertToHourMinutes(updated_at);
+      console.log(lastUpdate)
       const analogSensors = sensors.filter((sensor) => sensor.type === "current");
       if(!charts.current) {
         const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
@@ -76,80 +77,6 @@ function Dashboard( props ) {
 
     return () => socket.disconnect();
   }, []);
-
-  // useEffect(() => {
-   
-
-  //   async function fetchRuntimeData() {
-  //     if(devices) {
-  //       const { data } = await api.get('/devices/data', {
-  //         params: {
-  //           device_id: devices[selectedDevice].device_id,
-  //           device    // async function fetchRuntimeData() {
-  //     if(devices) {
-  //       const { data } = await api.get('/devices/data', {
-  //         params: {
-  //           device_id: devices[selectedDevice].device_id,
-  //           device_name: devices[selectedDevice].device_name,
-  //           device_user: devices[selectedDevice].device_user,
-  //         }
-  //       });
-
-  //       const { sensors, updated_at } = data[0];
-  //       const lastUpdate = convertToHourMinutes(updated_at);
-  //       const analogSensors = sensors.filter((sensor) => sensor.type === 'a');
-
-  //       if(!charts) {
-  //         const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
-  //         setCharts(sensorsChart);
-  //       } else {
-  //         // chart.data.datasets[0].data = chart.data.datasets[0].data.push(analogSensors[0].item)
-  //         charts.forEach(({ chart }, index) => {
-  //           if(chart.data.labels.length > 15) removeData(chart)
-  //           addData(chart, lastUpdate, Math.random()*100);
-  //         });
-  //       }
-
-  //       setSensors(data);
-  //       setLastData(data[0]);
-  //     }
-  //   }
-
-  //   const requestTimer = setTimeout(async() => {
-  //     if(!devices) await fetchInicialData();
-  //     await fetchRuntimeData();
-  //   }, 2500);_name: devices[selectedDevice].device_name,
-  //           device_user: devices[selectedDevice].device_user,
-  //         }
-  //       });
-
-  //       const { sensors, updated_at } = data[0];
-  //       const lastUpdate = convertToHourMinutes(updated_at);
-  //       const analogSensors = sensors.filter((sensor) => sensor.type === 'a');
-
-  //       if(!charts) {
-  //         const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
-  //         setCharts(sensorsChart);
-  //       } else {
-  //         // chart.data.datasets[0].data = chart.data.datasets[0].data.push(analogSensors[0].item)
-  //         charts.forEach(({ chart }, index) => {
-  //           if(chart.data.labels.length > 15) removeData(chart)
-  //           addData(chart, lastUpdate, Math.random()*100);
-  //         });
-  //       }
-
-  //       setSensors(data);
-  //       setLastData(data[0]);
-  //     }
-  //   }
-
-  //   const requestTimer = setTimeout(async() => {
-  //     if(!devices) await fetchInicialData();
-  //     await fetchRuntimeData();
-  //   }, 2500);
-
-  //   return () => clearInterval(requestTimer);
-  // }, [devices, sensors]);
 
   return (
     <Container>
