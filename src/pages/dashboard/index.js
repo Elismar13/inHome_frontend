@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
 import api from '../../api/inhome';
@@ -39,7 +39,7 @@ const LocalMap = dynamic(() => import( '../../components/LocalMap'), {
 function Dashboard( props ) {
   const [devices, setDevices] = useState(null);
   const [lastSensorData, setLastData] = useState(null);
-  const [charts, setCharts] = useState(null);
+  const charts = useRef(null);
   const [selectedDevice, setDevice] = useState(0);
 
   useEffect(() => {
@@ -54,20 +54,22 @@ function Dashboard( props ) {
       const { sensors, updated_at } = lastData;
       const lastUpdate = convertToHourMinutes(updated_at);
       const analogSensors = sensors.filter((sensor) => sensor.type === "current");
-      if(!charts) {
+      if(!charts.current) {
         const sensorsChart = analogSensors.map((sensor) => createChart('corrente', 'Consumo de corrente do ar-condicionado'));
-        setCharts(sensorsChart);
+        charts.current = { sensorsChart, update: true };
       } else {
-        // chart.data.datasets[0].data = chart.data.datasets[0].data.push(analogSensors[0].item)
-        console.log('opa')
-        charts.forEach(({ chart }, index) => {
-          if(chart.data.labels.length > 15) removeData(chart)
-          addData(chart, lastUpdate, analogSensors[0].value);
-        });
+        if(charts.current.update) {
+          charts.current.sensorsChart.forEach(({ chart }, index) => {
+            if(chart.data.labels.length-1 > 15) removeData(chart)
+            addData(chart, lastUpdate, analogSensors[0].value);
+          });
+          charts.current.update = false;
+        } else {
+          charts.current.update = true;
+        }
       }
 
       setLastData(lastData);
-      console.log(devices, lastData)
     });
     
     fetchInicialData();

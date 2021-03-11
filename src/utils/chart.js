@@ -1,7 +1,7 @@
 import { Chart } from 'chart.js';
 
 export function addData(chart, label, data) {
-    console.log(chart)
+    console.log('addingData')
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);

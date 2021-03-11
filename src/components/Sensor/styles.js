@@ -20,7 +20,7 @@ export const Type = styled.h3`
 `;
 
 export const Value = styled.p`
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 `;
 
 export const Ambient = styled.span`
